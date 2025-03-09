@@ -1,0 +1,27 @@
+{
+  "name": "cloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./Cloud189.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cloud": "file:",
+    "dotenv": "^16.4.5",
+    "got": "^11.8.2",
+    "log4js": "^6.9.1",
+    "node-jsencrypt": "^1.0.0",
+    "superagent": "^9.0.1",
+    "tough-cookie": "^4.1.4",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
+}
