@@ -1,1 +1,45 @@
 
+name: Action
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 14 * * *
+
+
+jobs:
+    build:
+      runs-on: ubuntu-22.04
+
+      steps:
+        - name: 更改交换空间并link构建空间
+          uses: zhlhlf/maximize-build-space@master
+          with:
+            swap-size-mb: 8192
+            
+        - name: 获取本仓库源码
+          uses: actions/checkout@main
+
+        - name: Cache Cookies
+          id: cache-primes
+          uses: actions/cache@v4
+          with:
+            path: tyys_cookies.json
+            key: ${{ runner.os }}-by_zhlhlf
+          
+        - name: 安装node.js环境
+          uses: actions/setup-node@main
+          with:
+            node-version: 18
+            
+        - name: 注入私有Secrets到环境
+          uses: zhlhlf/Secrets_To_Env@master
+          with:
+            secrets_json: ${{ toJSON(secrets) }}
+          
+        - name: 执行
+          run: |  
+            npm install >/dev/null 2>&1
+            npm start
+
+              
